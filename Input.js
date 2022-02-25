@@ -1,0 +1,9 @@
+class input {
+
+    positionIn() {}
+
+    resetGame() {}
+
+    
+
+}

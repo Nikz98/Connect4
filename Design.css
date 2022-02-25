@@ -1,0 +1,42 @@
+.column {
+    width: 100px;
+    height: 100px;
+    margin: 0px;
+    border: 10px #2F394D solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 80px;
+}
+
+.row {
+    width: 800px;
+    margin: 0px auto;
+    display: flex;
+    justify-content: center;
+}
+
+.marker {
+    width: 80px;
+    height: 80px;
+}
+
+#winner-display {
+    display: none;
+    background-color: #C1666B;
+    color: #E4DFDA;
+}
+
+body {
+    text-align: center;
+    background-color: #56666B;
+}
+
+#reset-button{
+    margin-top: 10px;
+}
+
+#score_board{
+    display: flexbox;
+    justify-content: center;
+}
