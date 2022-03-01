@@ -4,7 +4,7 @@ class Board {
     rows
     columns
 
-    constructor(rows, columns, p1, p2) {
+    constructor(rows, columns) {
         this.numRows = rows
         this.numColumns = columns
         this.current_player = false
