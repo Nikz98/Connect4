@@ -12,4 +12,6 @@ class Display { //JS sucks cos they dont have interfaces :(
     drawBoard() {}
 
     displayWinner() {}
+
+    promptPlayerMove() {}
 }

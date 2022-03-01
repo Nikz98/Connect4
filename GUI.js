@@ -8,11 +8,10 @@ class GUI extends Display {
     changeNames() {
         let p1Name = document.getElementById('p1Name').value
         let p2Name = document.getElementById('p2Name').value
-        p1Name = (p1Name === '') ? 'Red' : p1Name
-        p2Name = (p2Name === '') ? 'Yellow' : p2Name
+        p1Name = (p1Name === '') ? 'Guest 1' : p1Name
+        p2Name = (p2Name === '') ? 'Guest 2' : p2Name
         document.getElementById("p1ScoreName").innerHTML = `${p1Name}: `
         document.getElementById("p2ScoreName").innerHTML = `${p2Name}: `
-        this.player1.getScore()
         this.player1.setPlayerName(p1Name)
         this.player2.setPlayerName(p2Name)
     }
@@ -42,18 +41,21 @@ class GUI extends Display {
         this.updateScore()
     }
 
-    setupDOMListeners() {
-        const resetButton = document.getElementById("reset-button")
-        const submitButton = document.getElementById("submitNames")
-
-        resetButton.addEventListener("click", resetClick)
-        submitButton.addEventListener("click", this.changeNames)
-
+    promptPlayerMove() {
+        let column
         for (let rowIndex = 0; rowIndex < 6; rowIndex++) {
             for (let columnIndex = 0; columnIndex < 7; columnIndex++) {
                 const gridPosition = document.getElementById(`row-${rowIndex}-column-${columnIndex}`)
-                gridPosition.addEventListener("click", positionClick.bind(" ", columnIndex))
+                gridPosition.addEventListener("click", function(event){column = columnIndex}, false)
             }
         }
+        return column
+    }
+
+    setupDOMListeners() {
+        const resetButton = document.getElementById("reset-button")
+        const submitButton = document.getElementById("submitNames")
+        resetButton.addEventListener("click", playGame)
+        submitButton.addEventListener("click", changeNameClick)
     }
 }

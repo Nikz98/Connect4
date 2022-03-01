@@ -1,19 +1,12 @@
 class Board {
 
-    board
-    rows
-    columns
-
     constructor(rows, columns) {
         this.numRows = rows
         this.numColumns = columns
-        this.current_player = false
-        this.setBoard()
     }
 
-    setBoard() {
+    makeBoard() {
         this.board = []
-        this.current_player = false
         for (let y = 0; y < this.numRows; y++) {
             this.board.push(Array.from({length: this.numColumns}).fill('-'));
         }
@@ -21,11 +14,10 @@ class Board {
     
     // --------------------------------------------------------------------------------------------------------
     
-    placeTurn(column) {
+    placeTurn(column, token) { // add ternary function below
         for (let i = this.numRows-1; i >= 0; i--) {
             if (this.board[i][column] === '-') {
-                this.current_player = !this.current_player
-                this.board[i][column] = (this.current_player) ? this.player1.getToken() : this.player2.getToken()
+                this.board[i][column] = token
                 break
             }
         }
@@ -36,8 +28,7 @@ class Board {
     checkWinner() {
         let flippedBoard = this.board[0].map((val, index) => this.board.map(row => row[index]).reverse())
         if (this.check4(this.board) || this.check4(flippedBoard)) {
-            (this.current_player) ? this.player1.addScore() : this.player2.addScore()
-            return (this.current_player) ? this.player1.getPlayerName() : this.player2.getPlayerName()
+            return true
         }
         return null
     }

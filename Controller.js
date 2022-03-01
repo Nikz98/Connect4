@@ -1,39 +1,61 @@
-// class Connect4 {
-let logTracker = true       // short strings to track movement of code
-let logDebug = true         // variables or information to ensure code is working correctly
-let logFunction = true      // the function that is running
-let logBoard = true         // current board array state
+const numRows = 6,
+    numColumns = 7,
+    player1= new Computer('Guest 1', 'R')
+    player2 = new Computer('Guest 2', 'Y')
+    board = new Board(numRows,numColumns)
+    display = new GUI(player1, player2)
 
-numRows = 6
-numColumns = 7
-const player1= new Human('Red', 'R')
-const player2 = new Human('Yellow', 'Y')
-const board = new Board(numRows,numColumns, player1, player2)
-const display = new GUI(player1, player2)
-let gameOver = false
-
-function printLog(item, string) {
-    if (item) {console.log(string)}
-}
-
-
-function positionClick(columnIndex) {
-    if (!gameOver) {
-        board.placeTurn(columnIndex)
+function playGame() {
+    board.makeBoard()
+    display.resetDisplay(board.getBoard())
+    let gameOver = false, 
+        currentPlayer = player1
+    while (!gameOver) {
+        board.placeTurn(currentPlayer.getMove(), currentPlayer.getToken())
         display.drawBoard(board.getBoard())
         winner = board.checkWinner()
         if (winner) {
-            display.displayWinner(winner)
+            currentPlayer.addScore()
+            display.displayWinner(currentPlayer.getPlayerName())
             gameOver = true
         }
+        currentPlayer = (currentPlayer === player1) ? player2 : player1
     }
 }
 
 
-function resetClick() {
-    board.setBoard()
-    display.resetDisplay(board.getBoard())
-    gameOver = false
+function changeNameClick() {
+    display.changeNames()
 }
 
+
 display.setupDOMListeners()
+playGame()
+
+
+
+// function playGame() {
+//     board.makeBoard()
+//     display.resetDisplay(board.getBoard())
+//     let gameOver = false, 
+//         currentPlayer = player1
+//     while (!gameOver) {
+//         let turn
+//         let myPromise = new Promise (function (pass, fail) {
+//             console.log('human turn')
+//             turn = currentPlayer.getMove()
+//             pass()
+//             fail()
+//         })
+    
+//         board.placeTurn(turn, currentPlayer.getToken())
+//         display.drawBoard(board.getBoard())
+//         winner = board.checkWinner()
+//         if (winner) {
+//             currentPlayer.addScore()
+//             display.displayWinner(currentPlayer.getPlayerName())
+//             gameOver = true
+//         }
+//         currentPlayer = (currentPlayer === player1) ? player2 : player1
+//     }
+// }
