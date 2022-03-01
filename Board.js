@@ -7,8 +7,6 @@ class Board {
     constructor(rows, columns, p1, p2) {
         this.numRows = rows
         this.numColumns = columns
-        this.player1 = p1
-        this.player2 = p2
         this.current_player = false
         this.setBoard()
     }
