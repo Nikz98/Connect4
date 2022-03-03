@@ -10,6 +10,8 @@ class Player {
         this.score = 0
     }
 
+    getPlayerType() {}
+
     getMove() {}
 
     addScore() {

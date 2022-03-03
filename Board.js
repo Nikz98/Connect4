@@ -1,5 +1,9 @@
 class Board {
 
+    board
+    numRows
+    numColumns
+
     constructor(rows, columns) {
         this.numRows = rows
         this.numColumns = columns

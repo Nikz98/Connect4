@@ -3,6 +3,9 @@ class Computer extends Player {
         return Math.floor(Math.random() * board.getNumColumns())
     }
 
+    getPlayerType() {
+        return "Computer"
+    }
     // aPause() {
     //     await new Promise(r => setTimeout(r, 1000))
     //     console.log(`Thinking...`)

@@ -4,4 +4,7 @@ class Human extends Player {
         return display.promptPlayerMove()
     }
 
+    getPlayerType() {
+        return "Human"
+    }
 }

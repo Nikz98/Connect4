@@ -1,4 +1,7 @@
-class Display { //JS sucks cos they dont have interfaces :(
+class Display { //JS sucks cos they dont have interfaces :( - add I
+
+    player1
+    player2
 
     constructor(p1, p2) {
         this.player1 = p1
