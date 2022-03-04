@@ -7,91 +7,107 @@
     </head>
 
     <body>
-        <h1>Connect4</h1>
-        <p id="winner-display">The winner is <span id="winner-name"></span></p>
+        <WelcomeScreen class="welcomeScreen" id="welcomeScreen">
+            <h1 class="title">Connect4</h1>
+            
+            <div id="name_fields" class="names">
+                <label for="p1Name">Red Player Name:</label>
+                <input type="text" id="p1Name" name="p1Name" placeholder="Guest 1"><br>
 
-        <div id="name_fields">
-            <label for="p1Name">Red Player Name:</label>
-            <input type="text" id="p1Name" name="p1Name" placeholder="Guest 1"><br>
+                <label for = "p2Name">Yellow Player Name:</label>
+                <input type = "text" id="p2Name" name="p2Name" placeholder="Guest 2"><br>
 
-            <label for = "p2Name">Yellow Player Name:</label>
-            <input type = "text" id="p2Name" name="p2Name" placeholder="Guest 2"><br>
+                <input type="radio" id="Human" name="gameMode" value="true" checked>
+                <label for="Human" checked>Human v Human</label>
+           
+                <input type="radio" id="Computer" name="gameMode" value="">
+                <label for="Computer">Human v Computer</label><br>
 
-            <input type="submit" value="Submit" id="submitNames">
-        </div>
 
-        <div id="score_board">
-            Score Board<br>
-            <p id="p1ScoreName">Guest 1: <p id="p1Score">0</p></p>
-            <p id="p2ScoreName">Guest 2: <p id="p2Score">0</p></p>
-        </div>
+                <input type="submit" value="Play" id="submitNames" class="buttons">
+            </div>
 
-        <div id="grid">
-            <div class="row" id="row-0">
-                <div class="column" id="row-0-column-0"></div>
-                <div class="column" id="row-0-column-1"></div>
-                <div class="column" id="row-0-column-2"></div>
-                <div class="column" id="row-0-column-3"></div>
-                <div class="column" id="row-0-column-4"></div>
-                <div class="column" id="row-0-column-5"></div>
-                <div class="column" id="row-0-column-6"></div>
-            </div>
-            <div class="row" id="row-1">
-                <div class="column" id="row-1-column-0"></div>
-                <div class="column" id="row-1-column-1"></div>
-                <div class="column" id="row-1-column-2"></div>
-                <div class="column" id="row-1-column-3"></div>
-                <div class="column" id="row-1-column-4"></div>
-                <div class="column" id="row-1-column-5"></div>
-                <div class="column" id="row-1-column-6"></div>
-            </div>
-            <div class="row" id="row-2">
-                <div class="column" id="row-2-column-0"></div>
-                <div class="column" id="row-2-column-1"></div>
-                <div class="column" id="row-2-column-2"></div>
-                <div class="column" id="row-2-column-3"></div>
-                <div class="column" id="row-2-column-4"></div>
-                <div class="column" id="row-2-column-5"></div>
-                <div class="column" id="row-2-column-6"></div>
-            </div>
-            <div class="row" id="row-3">
-                <div class="column" id="row-3-column-0"></div>
-                <div class="column" id="row-3-column-1"></div>
-                <div class="column" id="row-3-column-2"></div>
-                <div class="column" id="row-3-column-3"></div>
-                <div class="column" id="row-3-column-4"></div>
-                <div class="column" id="row-3-column-5"></div>
-                <div class="column" id="row-3-column-6"></div>
-            </div>
-            <div class="row" id="row-4">
-                <div class="column" id="row-4-column-0"></div>
-                <div class="column" id="row-4-column-1"></div>
-                <div class="column" id="row-4-column-2"></div>
-                <div class="column" id="row-4-column-3"></div>
-                <div class="column" id="row-4-column-4"></div>
-                <div class="column" id="row-4-column-5"></div>
-                <div class="column" id="row-4-column-6"></div>
-            </div>
-            <div class="row" id="row-5">
-                <div class="column" id="row-5-column-0"></div>
-                <div class="column" id="row-5-column-1"></div>
-                <div class="column" id="row-5-column-2"></div>
-                <div class="column" id="row-5-column-3"></div>
-                <div class="column" id="row-5-column-4"></div>
-                <div class="column" id="row-5-column-5"></div>
-                <div class="column" id="row-5-column-6"></div>
-            </div>
-        </div>
+        </WelcomeScreen>
 
-        <button id="reset-button">Reset</button>
-        <!-- <script src="Logic.js" type="text/javascript"></script> -->
-        <script src="Player.js" type="text/javascript"></script>
-        <script src="Board.js" type="text/javascript"></script>
-        <script src="Display.js" type="text/javascript"></script>
-        <script src="Computer.js" type="text/javascript"></script>
-        <script src="Human.js" type="text/javascript"></script>
-        <script src="GUI.js" type="text/javascript"></script>
-        <script src="Controller.js" type="text/javascript"></script>
+        <game id="game" hidden>
+            <h1 class="title">Connect4</h1>
+
+            <div id="score_board" class="score-board">
+                Score Board<br>
+                <p id="p1ScoreName" class="score">Guest 1: 0</p></p>
+                <p id="p2ScoreName" class="score">Guest 2: 0</p></p>
+            </div>
+
+            <p id="winner-display">The winner is <span id="winner-name"></span></p>
+
+            <div id="grid" >
+                <div class="row" id="row-0">
+                    <div class="column" id="row-0-column-0"></div>
+                    <div class="column" id="row-0-column-1"></div>
+                    <div class="column" id="row-0-column-2"></div>
+                    <div class="column" id="row-0-column-3"></div>
+                    <div class="column" id="row-0-column-4"></div>
+                    <div class="column" id="row-0-column-5"></div>
+                    <div class="column" id="row-0-column-6"></div>
+                </div>
+                <div class="row" id="row-1">
+                    <div class="column" id="row-1-column-0"></div>
+                    <div class="column" id="row-1-column-1"></div>
+                    <div class="column" id="row-1-column-2"></div>
+                    <div class="column" id="row-1-column-3"></div>
+                    <div class="column" id="row-1-column-4"></div>
+                    <div class="column" id="row-1-column-5"></div>
+                    <div class="column" id="row-1-column-6"></div>
+                </div>
+                <div class="row" id="row-2">
+                    <div class="column" id="row-2-column-0"></div>
+                    <div class="column" id="row-2-column-1"></div>
+                    <div class="column" id="row-2-column-2"></div>
+                    <div class="column" id="row-2-column-3"></div>
+                    <div class="column" id="row-2-column-4"></div>
+                    <div class="column" id="row-2-column-5"></div>
+                    <div class="column" id="row-2-column-6"></div>
+                </div>
+                <div class="row" id="row-3">
+                    <div class="column" id="row-3-column-0"></div>
+                    <div class="column" id="row-3-column-1"></div>
+                    <div class="column" id="row-3-column-2"></div>
+                    <div class="column" id="row-3-column-3"></div>
+                    <div class="column" id="row-3-column-4"></div>
+                    <div class="column" id="row-3-column-5"></div>
+                    <div class="column" id="row-3-column-6"></div>
+                </div>
+                <div class="row" id="row-4">
+                    <div class="column" id="row-4-column-0"></div>
+                    <div class="column" id="row-4-column-1"></div>
+                    <div class="column" id="row-4-column-2"></div>
+                    <div class="column" id="row-4-column-3"></div>
+                    <div class="column" id="row-4-column-4"></div>
+                    <div class="column" id="row-4-column-5"></div>
+                    <div class="column" id="row-4-column-6"></div>
+                </div>
+                <div class="row" id="row-5">
+                    <div class="column" id="row-5-column-0"></div>
+                    <div class="column" id="row-5-column-1"></div>
+                    <div class="column" id="row-5-column-2"></div>
+                    <div class="column" id="row-5-column-3"></div>
+                    <div class="column" id="row-5-column-4"></div>
+                    <div class="column" id="row-5-column-5"></div>
+                    <div class="column" id="row-5-column-6"></div>
+                </div>
+            </div>
+
+            <button id="reset-button" class="buttons" >Reset</button>
+        </game>
     </body>
+
+            <!-- <script src="Logic.js" type="text/javascript"></script> -->
+            <script src="Player.js" type="text/javascript"></script>
+            <script src="Board.js" type="text/javascript"></script>
+            <script src="Display.js" type="text/javascript"></script>
+            <script src="Computer.js" type="text/javascript"></script>
+            <script src="Human.js" type="text/javascript"></script>
+            <script src="GUI.js" type="text/javascript"></script>
+            <script src="Controller.js" type="text/javascript"></script>
 
 </html>

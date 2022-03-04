@@ -1,13 +1,3 @@
-const numRows = 6,
-    numColumns = 7,
-    player1= new Human('Guest 1', 'R')
-    player2 = new Computer('Guest 2', 'Y')
-    board = new Board(numRows,numColumns)
-    display = new GUI(player1, player2)
-    let gameOver = false
-    let currentPlayer = player1
-
-
 function positionClick(columnIndex) {
     if (!gameOver) {
         if (currentPlayer.getPlayerType() === "Human") {
@@ -16,7 +6,6 @@ function positionClick(columnIndex) {
         if (currentPlayer.getPlayerType() === "Computer") {
             playMove(currentPlayer.getMove())
         }
-
     }
 }
 
@@ -40,10 +29,22 @@ function resetGame() {
     currentPlayer = player1
 }
 
-
-function changeNameClick() {
-    display.changeNames()
+function playClick() {
+    mode = display.getMode()
+    player2 = mode ? player2 : comp
+    display.showGame()
 }
+
+
+const numRows = 6
+const numColumns = 7
+const player1 = new Human('Guest 1', 'red')
+let player2 = new Human('Guest 2', 'yellow')
+const comp = new Computer('Guest 2', 'yellow')
+const board = new Board(numRows, numColumns)
+const display = new GUI(player1, player2)
+let gameOver = false
+let currentPlayer = player1
 
 resetGame()
 display.setupDOMListeners()
